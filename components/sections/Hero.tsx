@@ -9,7 +9,7 @@ export function Hero() {
   const [copied, setCopied] = useState(false);
 
   const copySnippet = () => {
-    navigator.clipboard.writeText("git clone https://github.com/SMIT5629/spotify-clone.git");
+    navigator.clipboard.writeText("git clone https://github.com/SMIT5629/");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -220,7 +220,7 @@ export function Hero() {
               <div className="flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white/60 p-2.5 dark:border-slate-800/80 dark:bg-slate-900/40">
                 <Cpu size={16} className="text-emerald-500 shrink-0" />
                 <span className="text-[11px] font-medium text-slate-700 dark:text-slate-300 truncate">
-                  Systems Design
+                  Server-Side Engineering
                 </span>
               </div>
             </div>

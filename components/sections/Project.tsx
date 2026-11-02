@@ -24,11 +24,13 @@ export function Project() {
 
   return (
     <section id="projects" className="relative py-20 lg:py-28">
+      <div className="pointer-events-none absolute top-1/3 -left-40 h-[500px] w-[500px] rounded-full bg-emerald-500/20 blur-[130px] dark:bg-emerald-500/20" />
+<div className="pointer-events-none absolute top-1/3 -right-40 h-[500px] w-[500px] rounded-full bg-teal-500/20 blur-[130px] dark:bg-teal-500/20" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="// 03. FEATURED WORK"
           title="Projects & Applications"
-          subtitle="Real-world applications built with React, Node.js, Express, MongoDB, RESTful APIs, and real-time communications."
+          subtitle="Real-world applications and Mini Projects built with React, Node.js, Express, MongoDB, Ejs RESTful APIs, and real-time communications."
         />
 
         {/* Filter Categories */}

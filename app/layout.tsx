@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://smitpatel.dev"),
   title: "Smit Patel | Backend Developer",
   description:
     "Portfolio of Smit Patel — Aspiring Backend Developer pursuing Information Technology. Specializing in Node.js, Express, REST APIs, Database Architecture, and System Design.",
@@ -26,11 +27,16 @@ export const metadata: Metadata = {
     "Developer Portfolio",
   ],
   authors: [{ name: "Smit Patel", url: "https://github.com/SMIT5629" }],
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "Smit Patel | Backend Developer",
     description:
       "Aspiring Backend Developer building scalable web applications, REST APIs, and distributed systems.",
     type: "website",
+    images: ["/icon.png"],
   },
 };
 
@@ -64,7 +70,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-200">
+      <body className="min-h-full flex flex-col bg-(--background) text-(--foreground) antialiased transition-colors duration-200">
         {children}
       </body>
     </html>

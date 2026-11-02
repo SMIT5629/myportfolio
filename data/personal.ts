@@ -20,7 +20,7 @@ export const personalInfo = {
         degree: "Bachelor of Engineering",
         field: "Information Technology",
         college: "Government Engineering College, Bhavnagar",
-        graduationYear: "2027",
+        graduationYear: "2023-2027",
     },
 
     socials: [

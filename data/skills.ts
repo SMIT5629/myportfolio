@@ -42,11 +42,11 @@ export const skills = [
     {
         category: "DevOps & Tools",
         items: [
-            { name: "Git", level: 8 },
+            { name: "Git", level: 7 },
             { name: "GitHub", level: 8 },
-            { name: "Docker", level: 7 },
+            { name: "Docker", level: 6 },
             { name: "Kubernetes", level: 4 },
-            { name: "Postman", level: 9 },
+            { name: "Postman", level: 8 },
         ],
     },
     {

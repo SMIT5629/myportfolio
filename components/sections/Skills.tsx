@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { skills } from "@/data/skills";
 import SectionHeading from "@/components/ui/SectionHeading";
+import TechIcon from "@/components/ui/TechIcon";
 
 export function Skills() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -45,6 +46,8 @@ export function Skills() {
 
   return (
     <section id="skills" className="relative py-20 lg:py-28 bg-slate-50/50 dark:bg-slate-950/40">
+      <div className="pointer-events-none absolute top-0 -left-20 h-[400px] w-[400px] rounded-full bg-emerald-500/15 blur-[100px] dark:bg-emerald-500/20" />
+<div className="pointer-events-none absolute bottom-0 -right-20 h-[400px] w-[400px] rounded-full bg-teal-500/20 blur-[100px] dark:bg-teal-500/20" />
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="// 02. SKILLS"
@@ -100,10 +103,13 @@ export function Skills() {
                 <div className="mt-4 space-y-3.5">
                   {cat.items.map((item) => (
                     <div key={item.name} className="group">
-                      <div className="flex items-center justify-between text-xs mb-1">
-                        <span className="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                          {item.name}
-                        </span>
+                      <div className="flex items-center justify-between text-xs mb-1.5">
+                        <div className="flex items-center gap-2">
+                          <TechIcon name={item.name} size={18} />
+                          <span className="font-medium text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            {item.name}
+                          </span>
+                        </div>
                         <span className="font-mono text-[11px] text-slate-600 dark:text-slate-400">
                           {item.level}/10
                         </span>

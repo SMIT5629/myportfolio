@@ -5,7 +5,10 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 export function About() {
   return (
-    <section id="about" className="relative py-20 lg:py-28">
+    <section id="about" className="relative py-20 lg:py-28 ">
+       <div className="pointer-events-none absolute top-1/4 -left-28 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl dark:bg-emerald-500/15 " />
+      <div className="pointer-events-none absolute bottom-1/4 -right-28 h-96 w-96 rounded-full bg-teal-500/10 blur-3xl dark:bg-teal-500/10" />
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="// 01. ABOUT ME"
@@ -27,10 +30,7 @@ export function About() {
                   {personalInfo.introduction}
                 </p>
                 <p>
-                  My engineering journey began with a curiosity for how data moves across networks
-                  and how robust server-side systems power smooth, responsive client experiences.
-                  I believe that well-architected APIs, structured databases, and clean code are the
-                  unsung backbone of every great digital product.
+                 My engineering journey began with curiosity about networks and backend systems. I enjoy building well-structured APIs, efficient databases, and responsive applications through clean code.
                 </p>
                 <p>
                   Currently based in <strong className="text-slate-900 dark:text-slate-200">{personalInfo.location}</strong>,
@@ -118,6 +118,7 @@ export function About() {
                     "Database Management Systems",
                     "Object Oriented Programming",
                     "Operating Systems",
+                    "Web Development","Advnace Web programming",
                     "Computer Networks",
                   ].map((course) => (
                     <span
