@@ -190,5 +190,40 @@ export const projects = [
     ],
     github: "https://github.com/SMIT5629/to-do-list-app",
     featured: false,
+},
+{
+    id: 9,
+    title: "Weather Api Project",
+    category: "Frontend Development",
+    description: "A simple and clean weather API application that provides real-time weather information and forecasts.",
+    image: "/images/projects/weather-api.png",
+    technologies: ["HTML", "CSS", "JavaScript", "Weather API"],
+    features: [
+        "View current weather conditions",
+        "See 5-day weather forecast",
+        "Search for weather in different cities",
+        "Display weather icons and descriptions",
+        "Show temperature in Celsius and Fahrenheit"
+    ],
+    github: "https://github.com/SMIT5629/Weatherproject",
+    featured: false,
+},
+{
+    id: 10,
+    title: "SWEN",
+    category: "Frontend Development",
+    description: "A simple news API app that provides real-time news information and forecasts.",
+    image: "/images/projects/news-api.png",
+    technologies: ["HTML", "CSS", "JavaScript","Reactjs", "News API"],
+    features: [
+        "View current news conditions",
+        "Search for news in different categories",
+        "Display news icons and descriptions",
+        "Show news sources and timestamps"
+    ],
+    github: "https://github.com/SMIT5629/news-app",
+    featured: false,
 }
 ];
+
+    

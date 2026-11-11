@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -7,6 +8,8 @@ import Skills from "@/components/sections/Skills";
 import Project from "@/components/sections/Project";
 import Education from "@/components/sections/Education";
 import Contact from "@/components/sections/Contact";
+import { FallingLeaves } from "falling-leaves/react"
+
 
 export default function Home() {
   return (
@@ -16,6 +19,10 @@ export default function Home() {
 
       {/* Main One-Page Content */}
       <main className="flex-1 w-full">
+        <FallingLeaves
+        fullScreen={true}
+        shapes={[ "maple" ]}
+        count={10} />
         <Hero />
         <About />
         <Skills />
