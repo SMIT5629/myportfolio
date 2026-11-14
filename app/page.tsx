@@ -14,15 +14,14 @@ import { FallingLeaves } from "falling-leaves/react"
 export default function Home() {
   return (
     <div className="relative min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
-      {/* Sticky Top Navigation */}
       <Navbar />
 
-      {/* Main One-Page Content */}
       <main className="flex-1 w-full">
         <FallingLeaves
-        fullScreen={true}
-        shapes={[ "maple" ]}
-        count={10} />
+          fullScreen={true}
+          shapes={["maple"]}
+           colors={["#15803d", "#16a34a", "#22c55e", "#4ade80"]}
+          count={15} />
         <Hero />
         <About />
         <Skills />
@@ -31,7 +30,6 @@ export default function Home() {
         <Contact />
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

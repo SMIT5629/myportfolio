@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowDown, FileDown, Terminal, Check, Copy, Sparkles, Layers, Database, Cpu } from "lucide-react";
+import { ArrowDown, FileDown, Terminal, Check, Copy, Layers, Database, Cpu } from "lucide-react";
 import { personalInfo } from "@/data/personal";
 import SocialLinks from "@/components/ui/SocialLinks";
 
@@ -30,7 +30,7 @@ export function Hero() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Hero Copy */}
+          {/* Left Column */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6">
             {/* Status Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-mono font-medium text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400">
@@ -43,10 +43,10 @@ export function Hero() {
               <span>{personalInfo.location}</span>
             </div>
 
-            {/* Main Title & Role */}
+            {/* Name & Role */}
             <div className="space-y-2">
-              <p className="text-sm sm:text-base font-mono font-semibold tracking-wider text-emerald-600 dark:text-emerald-400">
-                HELLO WORLD, I AM
+              <p className="text-sm sm:text-base font-mono font-semibold text-emerald-600 dark:text-emerald-400">
+                Hi, I&apos;m
               </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 {personalInfo.name}
@@ -66,11 +66,10 @@ export function Hero() {
               &quot;{personalInfo.tagline}&quot;
             </blockquote>
 
-            {/* Introduction snippet */}
+            {/* Intro */}
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
-              Passionate about engineering reliable backends, designing clean RESTful APIs,
-              and working behind the scenes with databases and systems logic. Focused on creating
-              performant, scalable, and recruiter-ready software.
+              I build the backend side of things: REST APIs, databases, and the server logic behind them. I&apos;m
+              still a student, and I learn most by building projects and fixing what breaks.
             </p>
 
             {/* CTAs */}
@@ -97,20 +96,17 @@ export function Hero() {
                 onClick={() => scrollTo("contact")}
                 className="inline-flex items-center gap-2 rounded-lg border border-transparent px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 cursor-pointer"
               >
-                <span>Get In Touch</span>
+                <span>Get in touch</span>
               </button>
             </div>
 
-            {/* Socials Link Row */}
+            {/* Socials */}
             <div className="pt-2">
-              <span className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-slate-400 block mb-2">
-                Connect With Me
-              </span>
               <SocialLinks showLabels={true} iconSize={16} />
             </div>
           </div>
 
-          {/* Right Column: Interactive Backend Terminal Console */}
+          {/* Right Column: terminal */}
           <div className="lg:col-span-5">
             <div className="relative rounded-xl border border-slate-200/90 bg-white/90 p-1 shadow-xl backdrop-blur-xl dark:border-slate-800/90 dark:bg-slate-900/90">
               {/* Window Header */}
@@ -122,105 +118,85 @@ export function Hero() {
                 </div>
                 <div className="flex items-center gap-1.5 font-mono text-xs text-slate-500 dark:text-slate-400">
                   <Terminal size={12} className="text-emerald-500" />
-                  <span>smit@backend-node: ~/api</span>
+                  <span>smit@portfolio: ~</span>
                 </div>
                 <button
                   type="button"
                   onClick={copySnippet}
-                  aria-label="Copy shell snippet"
+                  aria-label="Copy git clone command"
                   className="rounded p-1 text-slate-400 hover:text-emerald-500 transition-colors cursor-pointer"
                 >
                   {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
                 </button>
               </div>
 
-              {/* Terminal Code Body */}
+              {/* Terminal Body */}
               <div className="p-4 sm:p-5 font-mono text-xs leading-relaxed overflow-x-auto bg-slate-950 text-slate-200 rounded-b-lg">
-                <div className="flex items-center justify-between text-slate-400 pb-2 mb-2 border-b border-slate-800 text-[11px]">
-                  <span>// System Architecture Telemetry</span>
-                  <span className="text-emerald-400 flex items-center gap-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    ONLINE: 200 OK
-                  </span>
-                </div>
-
                 <p className="text-slate-400">
-                  <span className="text-emerald-400 font-bold">$</span> node server.js
+                  <span className="text-emerald-400 font-bold">$</span> git clone https://github.com/SMIT5629/
                 </p>
-                <p className="text-slate-400 mt-1">
-                  [info] Initializing REST API services...
-                </p>
-                <p className="text-emerald-400">
-                  [db] Connected to MongoDB cluster (replica set)
-                </p>
-                <p className="text-teal-400">
-                  [auth] JWT bearer authentication middleware ready
-                </p>
-                <p className="text-slate-300">
-                  [routes] Registered: /api/v1/projects, /api/v1/auth
+                <p className="text-slate-500 mt-1">
+                  <span className="text-emerald-400 font-bold">$</span> cat me.ts
                 </p>
 
-                {/* Code Preview Block */}
-                <div className="my-3 rounded border border-slate-800 bg-slate-900/90 p-3 text-[11px]">
-                  <p className="text-emerald-400">
-                    <span className="text-teal-300">app</span>.get(
-                    <span className="text-amber-300">&quot;/api/v1/status&quot;</span>, (req, res) =&gt; &#123;
+                <div className="my-3 rounded border border-slate-800 bg-slate-900/90 p-3 text-[11px] leading-6">
+                  <p className="text-slate-300">
+                    <span className="text-emerald-400">const</span> me = &#123;
                   </p>
-                  <p className="pl-4 text-slate-300">
-                    res.status(<span className="text-emerald-400">200</span>).json(&#123;
-                  </p>
-                  <p className="pl-8 text-slate-400">
-                    engineer: <span className="text-amber-300">&quot;Smit Patel&quot;</span>,
-                  </p>
-                  <p className="pl-8 text-slate-400">
-                    role: <span className="text-amber-300">&quot;Backend Developer&quot;</span>,
-                  </p>
-                  <p className="pl-8 text-slate-400">
-                    focus: [<span className="text-amber-300">&quot;REST APIs&quot;</span>, <span className="text-amber-300">&quot;Microservices&quot;</span>, <span className="text-amber-300">&quot;Databases&quot;</span>],
-                  </p>
-                  <p className="pl-8 text-slate-400">
-                    status: <span className="text-emerald-400">&quot;Ready for hire&quot;</span>
-                  </p>
-                  <p className="pl-4 text-slate-300">&#125;);</p>
-                  <p className="text-emerald-400">&#125;);</p>
+                  <div className="pl-4 text-slate-400">
+                    <p>
+                      name: <span className="text-amber-300">&quot;{personalInfo.name}&quot;</span>,
+                    </p>
+                    <p>
+                      role: <span className="text-amber-300">&quot;{personalInfo.role}&quot;</span>,
+                    </p>
+                    <p>
+                      backend: [<span className="text-amber-300">&quot;Node.js&quot;</span>,{" "}
+                      <span className="text-amber-300">&quot;Express&quot;</span>,{" "}
+                      <span className="text-amber-300">&quot;WebSockets&quot;</span>],
+                    </p>
+                    <p>
+                      databases: [<span className="text-amber-300">&quot;MongoDB&quot;</span>,{" "}
+                      <span className="text-amber-300">&quot;PostgreSQL&quot;</span>],
+                    </p>
+                    <p>
+                      frontend: [<span className="text-amber-300">&quot;TypeScript&quot;</span>,{" "}
+                      <span className="text-amber-300">&quot;React&quot;</span>,{" "}
+                      <span className="text-amber-300">&quot;Next.js&quot;</span>,{" "}
+                      <span className="text-amber-300">&quot;Tailwind&quot;</span>],
+                    </p>
+                    <p>
+                      status: <span className="text-emerald-400">&quot;{personalInfo.availability}&quot;</span>
+                    </p>
+                  </div>
+                  <p className="text-slate-300">&#125;;</p>
                 </div>
 
-                {/* Metrics Grid */}
-                <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800/80 text-center">
-                  <div className="rounded bg-slate-900/60 p-2">
-                    <p className="text-[10px] text-slate-400">RESPONSE</p>
-                    <p className="text-xs font-bold text-emerald-400 mt-0.5">&lt; 18ms</p>
-                  </div>
-                  <div className="rounded bg-slate-900/60 p-2">
-                    <p className="text-[10px] text-slate-400">UPTIME</p>
-                    <p className="text-xs font-bold text-emerald-400 mt-0.5">99.98%</p>
-                  </div>
-                  <div className="rounded bg-slate-900/60 p-2">
-                    <p className="text-[10px] text-slate-400">ENDPOINTS</p>
-                    <p className="text-xs font-bold text-teal-400 mt-0.5">RESTful</p>
-                  </div>
-                </div>
+                <p className="text-slate-500">
+                  <span className="text-emerald-400 font-bold">$</span>{" "}
+                  <span className="inline-block h-3 w-1.5 translate-y-0.5 animate-pulse bg-emerald-400" />
+                </p>
               </div>
             </div>
 
-            {/* Quick Feature Pillars beneath terminal */}
+            {/* Three small tags under the terminal */}
             <div className="mt-4 grid grid-cols-3 gap-3">
               <div className="flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white/60 p-2.5 dark:border-slate-800/80 dark:bg-slate-900/40">
                 <Layers size={16} className="text-emerald-500 shrink-0" />
                 <span className="text-[11px] font-medium text-slate-700 dark:text-slate-300 truncate">
-                  REST & APIs
+                  Node &amp; Express
                 </span>
               </div>
               <div className="flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white/60 p-2.5 dark:border-slate-800/80 dark:bg-slate-900/40">
                 <Database size={16} className="text-emerald-500 shrink-0" />
                 <span className="text-[11px] font-medium text-slate-700 dark:text-slate-300 truncate">
-                  SQL & NoSQL
+                  MongoDB &amp; Postgres
                 </span>
               </div>
               <div className="flex items-center gap-2 rounded-lg border border-slate-200/80 bg-white/60 p-2.5 dark:border-slate-800/80 dark:bg-slate-900/40">
                 <Cpu size={16} className="text-emerald-500 shrink-0" />
                 <span className="text-[11px] font-medium text-slate-700 dark:text-slate-300 truncate">
-                  Server-Side Engineering
+                  React &amp; Next.js
                 </span>
               </div>
             </div>

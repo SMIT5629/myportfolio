@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { Sun, Moon, Menu, X, FileDown } from "lucide-react";
 import { personalInfo } from "@/data/personal";
@@ -16,7 +16,11 @@ const NAV_ITEMS = [
 
 export function Navbar() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileModalOpen, setProfileModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
@@ -24,8 +28,8 @@ export function Navbar() {
 
   // Initialize theme on client mount
   useEffect(() => {
-    setMounted(true);
     const isDark = document.documentElement.classList.contains("dark");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(isDark ? "dark" : "light");
 
     const handleScroll = () => {
@@ -190,78 +194,71 @@ export function Navbar() {
             </button>
           </div>
         </div>
+{/* Mobile Dropdown Menu */}
+{mobileMenuOpen && (
+  <div className="border-b border-slate-200 bg-white/95 px-4 pt-4 pb-5 backdrop-blur-xl md:hidden dark:border-slate-800 dark:bg-slate-950/95">
+    <div className="flex flex-col gap-1">
+      {/* Profile */}
+      <button
+        type="button"
+        onClick={() => {
+          setMobileMenuOpen(false);
+          setProfileModalOpen(true);
+        }}
+        className="mb-3 flex items-center gap-3 border-b border-slate-200 pb-4 text-left dark:border-slate-800 cursor-pointer"
+      >
+        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-emerald-500/40">
+          <Image
+            src="/images/pfp1.jpg"
+            alt={personalInfo.name}
+            fill
+            sizes="40px"
+            className="object-cover object-center"
+          />
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-slate-900 dark:text-white">{personalInfo.name}</p>
+          <p className="font-mono text-xs text-slate-500">View photo</p>
+        </div>
+      </button>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="border-b border-slate-200 bg-white/95 px-4 pt-3 pb-5 backdrop-blur-xl md:hidden dark:border-slate-800 dark:bg-slate-950/95 shadow-lg">
-            <div className="flex flex-col gap-1.5">
-              {/* Profile Card in Mobile Menu */}
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setProfileModalOpen(true);
-                }}
-                className="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-left mb-2 cursor-pointer"
-              >
-                <div className="relative h-10 w-10 rounded-full overflow-hidden ring-2 ring-emerald-500/40 shrink-0">
-                  <Image
-                    src="/images/pfp1.jpg"
-                    alt="Smit Patel"
-                    fill
-                    sizes="40px"
-                    className="object-cover object-center"
-                  />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-slate-900 dark:text-white">
-                    {personalInfo.name}
-                  </p>
-                  <p className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
-                    Tap to view photo
-                  </p>
-                </div>
-              </button>
+      {/* Links */}
+      {NAV_ITEMS.map((item) => {
+        const isActive = activeSection === item.href.replace("#", "");
+        return (
+          <a
+            key={item.href}
+            href={item.href}
+            onClick={(e) => handleNavClick(e, item.href)}
+            className={`flex items-center gap-2 px-1 py-2.5 text-base transition-colors ${
+              isActive
+                ? "font-semibold text-emerald-600 dark:text-emerald-400"
+                : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            }`}
+          >
+            {isActive && <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />}
+            {item.label}
+          </a>
+        );
+      })}
 
-              {NAV_ITEMS.map((item) => {
-                const isActive = activeSection === item.href.replace("#", "");
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className={`flex items-center justify-between rounded-lg px-3.5 py-2.5 text-sm font-medium transition-colors ${
-                      isActive
-                        ? "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400 font-semibold"
-                        : "text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-900"
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    {isActive && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    )}
-                  </a>
-                );
-              })}
+      {/* Resume + status */}
+      <div className="mt-3 flex items-center justify-between border-t border-slate-200 pt-4 dark:border-slate-800">
+        <a
+          href={personalInfo.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white dark:bg-emerald-500 dark:text-slate-950"
+        >
+          <FileDown size={14} />
+          Resume
+        </a>
 
-              <div className="mt-2 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
-                <a
-                  href={personalInfo.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-lg bg-emerald-500 px-4 py-2 text-xs font-semibold text-white shadow-sm dark:text-slate-950"
-                >
-                  <FileDown size={14} />
-                  <span>Download Resume</span>
-                </a>
-
-                <span className="text-xs font-mono text-slate-600 dark:text-slate-400">
-                  {personalInfo.availability}
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
+        <span className="font-mono text-xs text-slate-500">{personalInfo.availability}</span>
+      </div>
+    </div>
+  </div>
+)}
       </header>
 
       {/* Instagram-Style Profile Preview Modal */}

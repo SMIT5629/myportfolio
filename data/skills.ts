@@ -4,15 +4,16 @@ export const skills = [
         items: [
             { name: "JavaScript", level: 9 },
             { name: "TypeScript", level: 7 },
-            { name: "Python", level: 6 },
+            { name: "Python", level: 4 },
             { name: "Java", level: 6 },
             { name: "C", level: 4 },
+            { name: "SQL", level: 7 },
         ],
     },
     {
         category: "Frontend Development",
         items: [
-            { name: "HTML", level: 10 },
+            { name: "HTML", level: 9 },
             { name: "CSS", level: 7 },
             { name: "React.js", level: 7 },
             { name: "Next.js", level: 7 },
@@ -32,10 +33,8 @@ export const skills = [
     {
         category: "Databases & Caching",
         items: [
-            { name: "SQL", level: 7 },
             { name: "MongoDB", level: 8 },
             { name: "MySQL", level: 7 },
-            { name: "Redis", level: 6 },
             { name: "PostgreSQL", level: 5 },
         ],
     },

@@ -1,16 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ArrowUp, Terminal } from "lucide-react";
 import { personalInfo } from "@/data/personal";
 import SocialLinks from "@/components/ui/SocialLinks";
 
 export function Footer() {
-  const [year, setYear] = useState<number>(2026);
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
+  const [year] = useState<number>(() => new Date().getFullYear());
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -52,9 +48,6 @@ export function Footer() {
                 — {personalInfo.role}
               </span>
             </div>
-            <p className="max-w-md text-xs text-slate-600 dark:text-slate-400 font-mono italic">
-              &quot;{personalInfo.tagline}&quot;
-            </p>
             <div className="flex items-center gap-2 pt-1 text-xs text-slate-600 dark:text-slate-400">
               <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>{personalInfo.availability}</span>
