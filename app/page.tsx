@@ -8,6 +8,7 @@ import Skills from "@/components/sections/Skills";
 import Project from "@/components/sections/Project";
 import Education from "@/components/sections/Education";
 import Contact from "@/components/sections/Contact";
+import PortfolioChat from "@/components/ui/PortfolioChat";
 import { FallingLeaves } from "falling-leaves/react"
 
 
@@ -31,6 +32,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <PortfolioChat />
     </div>
   );
 }

@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useSyncExternalStore } from "react";
 import { ArrowUp, Terminal } from "lucide-react";
 import { personalInfo } from "@/data/personal";
 import SocialLinks from "@/components/ui/SocialLinks";
 
 export function Footer() {
-  const [year] = useState<number>(() => new Date().getFullYear());
+  const year = useSyncExternalStore(
+    () => () => {},
+    () => new Date().getFullYear(),
+    () => null
+  );
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

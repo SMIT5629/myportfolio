@@ -4,8 +4,12 @@ export const personalInfo = {
     firstName: "Smit",
 
     role: "Backend Developer",
+    fullname: "Smit Ravindrabhai Patel",
 
     location: "Chikhli, Gujarat, India",
+    fullAddress: "Bharda Bhagat Faliya, Ghej, Chikhli",
+    hometown: "Chikhli, Gujarat",
+
 
     tagline: "Code is Like Humor. When You Have to Explain It, It’s Bad.",
 
@@ -16,6 +20,14 @@ export const personalInfo = {
 
     resume: "/resume.pdf",
 
+    personal: {
+        relationshipStatus: "Single",
+        sexualOrientation: "Straight",
+        nationality: "Indian",
+        languages: ["Gujarati", "Hindi", "English"],
+        hobbies: ["travel", "gaming"],
+        personality: [],
+    },
     education: {
         degree: "Bachelor of Engineering",
         field: "Information Technology",
@@ -41,5 +53,5 @@ export const personalInfo = {
         "Full Stack Development",
         "System Design",
         "Learning New Technologies",
-    ],
+    ]
 };

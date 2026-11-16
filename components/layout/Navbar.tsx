@@ -103,7 +103,7 @@ export function Navbar() {
               onClick={() => setProfileModalOpen(true)}
               aria-label="View profile picture"
               title="Click to view profile picture"
-              className="group relative flex h-9 w-9 items-center justify-center rounded-full p-[2px] transition-transform duration-200 hover:scale-105 cursor-pointer ring-2 ring-emerald-500/40 hover:ring-emerald-500 dark:ring-emerald-500/50 dark:hover:ring-emerald-400"
+              className="group relative flex h-9 w-9 items-center justify-center rounded-full p-0.5ransition-transform duration-200 hover:scale-105 cursor-pointer ring-2 ring-emerald-500/40 hover:ring-emerald-500 dark:ring-emerald-500/50 dark:hover:ring-emerald-400"
             >
               <div className="relative h-full w-full overflow-hidden rounded-full">
                 <Image
