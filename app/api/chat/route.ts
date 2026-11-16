@@ -50,7 +50,10 @@ export async function POST(request: Request) {
       });
     }
 
-    const context = sources.map((source, index) => `[${index + 1}] ${source.title}\n${source.content}`).join("\n\n");
+    const context = sources.map(
+      (source: { title: string; content: string }, index: number) =>
+        `[${index + 1}] ${source.title}\n${source.content}`
+    ).join("\n\n");
     const history = messages.slice(-8).map(({ role, content }) => ({ role, content }));
 
     const conversation = history.map(({ role, content }) =>
@@ -89,7 +92,10 @@ export async function POST(request: Request) {
       return Response.json({ error: "I couldn’t generate an answer. Please try again." }, { status: 502 });
     }
 
-    return Response.json({ answer: answer.trim(), sources: sources.map(({ title, href }) => ({ title, href })) });
+    return Response.json({
+      answer: answer.trim(),
+      sources: sources.map(({ title, href }: { title: string; href: string }) => ({ title, href })),
+    });
   } catch (error) {
     console.error("RAG chat request failed:", error);
     return Response.json({ error: "I couldn’t connect to the assistant. Please try again in a moment." }, { status: 502 });
